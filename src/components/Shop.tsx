@@ -12,7 +12,7 @@ class Shop extends Component {
       s: { value: string };
     };
 
-    const s = target.s.value;
+    const s = target.s.value.trim();
 
     localStorage.setItem('searchInput', s);
     this.setState({ s });
