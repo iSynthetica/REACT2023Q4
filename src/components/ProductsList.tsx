@@ -7,11 +7,13 @@ interface ProductsListProps {
 }
 
 interface ProductsListState {
+  isLoading: boolean;
   products: ProductI[];
 }
 
 class ProductsList extends Component<ProductsListProps, ProductsListState> {
   state = {
+    isLoading: true,
     products: [],
   };
   host = 'https://shop.synthetica.com.ua//wp-json/wc/v3';
@@ -30,8 +32,17 @@ class ProductsList extends Component<ProductsListProps, ProductsListState> {
       <ProductItem key={product.id} {...product} />
     ));
   }
+  renderResultTitle() {
+    return !this.state.products.length
+      ? 'Nothing found, try another request'
+      : this.props.s
+      ? `Search result for ${this.props.s} found in
+                  products titles and descriptions`
+      : `Type into search field for filtering products by title or
+                  description`;
+  }
   fetchAllProducts(s = '') {
-    this.setState({ products: [] });
+    this.setState({ isLoading: true, products: [] });
     const sParam = s ? `&search=${s}` : '';
     const url = `${this.host}/products?per_page=25${sParam}`;
     const headers = new Headers();
@@ -45,6 +56,7 @@ class ProductsList extends Component<ProductsListProps, ProductsListState> {
       .then((response) => response.json())
       .then((products) =>
         this.setState({
+          isLoading: false,
           products,
         })
       );
@@ -53,21 +65,11 @@ class ProductsList extends Component<ProductsListProps, ProductsListState> {
     return (
       <>
         <section id="contentContainer">
-          {!this.state.products.length ? (
+          {this.state.isLoading ? (
             <p className="loadingContainer">Loading...</p>
           ) : (
             <>
-              {this.props.s ? (
-                <h3 id="resultTitle">
-                  Search result for <strong>{this.props.s}</strong> found in
-                  products titles and descriptions
-                </h3>
-              ) : (
-                <h3 id="resultTitle">
-                  Type into search field for filtering products by title or
-                  description
-                </h3>
-              )}
+              <h3 id="resultTitle">{this.renderResultTitle()}</h3>
 
               {this.renderProducts()}
             </>
