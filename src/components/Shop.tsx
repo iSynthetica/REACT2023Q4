@@ -1,6 +1,7 @@
 import { Component, FormEvent, ReactNode } from 'react';
 import Search from './Search';
 import ProductsList from './ProductsList';
+import TestError from './TestError';
 
 class Shop extends Component {
   state = {
@@ -21,6 +22,7 @@ class Shop extends Component {
     return (
       <>
         <Search s={this.state.s} onSubmitHandler={this.onSubmitHandler} />
+        <TestError />
         <ProductsList s={this.state.s} />
       </>
     );

@@ -9,12 +9,14 @@ interface ProductsListProps {
 interface ProductsListState {
   isLoading: boolean;
   products: ProductI[];
+  isError: boolean;
 }
 
 class ProductsList extends Component<ProductsListProps, ProductsListState> {
   state = {
     isLoading: true,
     products: [],
+    isError: false,
   };
   host = 'https://shop.synthetica.com.ua//wp-json/wc/v3';
   token =
@@ -23,6 +25,9 @@ class ProductsList extends Component<ProductsListProps, ProductsListState> {
     this.fetchAllProducts(this.props.s);
   }
   componentDidUpdate(prevProps: ProductsListProps): void {
+    if (this.state.isError) {
+      throw new Error('error from test button');
+    }
     const { s } = this.props;
     if (s === prevProps.s) return;
     this.fetchAllProducts(s);
@@ -52,14 +57,18 @@ class ProductsList extends Component<ProductsListProps, ProductsListState> {
       headers,
     };
 
-    fetch(url, options)
-      .then((response) => response.json())
-      .then((products) =>
-        this.setState({
-          isLoading: false,
-          products,
-        })
-      );
+    try {
+      fetch(url, options)
+        .then((response) => response.json())
+        .then((products) =>
+          this.setState({
+            isLoading: false,
+            products,
+          })
+        );
+    } catch (err) {
+      this.setState({ isError: true });
+    }
   }
   render(): ReactNode {
     return (
