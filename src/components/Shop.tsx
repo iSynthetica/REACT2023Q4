@@ -1,13 +1,12 @@
-import { Component, FormEvent, ReactNode } from 'react';
+import { FormEvent, useState } from 'react';
 import Search from './Search';
 import ProductsList from './ProductsList';
 import TestError from './TestError';
 
-class Shop extends Component {
-  state = {
-    s: localStorage.getItem('searchInput') || '',
-  };
-  onSubmitHandler = (event: FormEvent<HTMLFormElement>): void => {
+const Shop = () => {
+  const [s, setSearch] = useState(localStorage.getItem('searchInput') || '');
+
+  const onSubmitHandler = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const target = event.target as typeof event.target & {
       s: { value: string };
@@ -16,17 +15,15 @@ class Shop extends Component {
     const s = target.s.value.trim();
 
     localStorage.setItem('searchInput', s);
-    this.setState({ s });
+    setSearch(s);
   };
-  render(): ReactNode {
-    return (
-      <>
-        <Search s={this.state.s} onSubmitHandler={this.onSubmitHandler} />
-        <TestError />
-        <ProductsList s={this.state.s} />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Search s={s} onSubmitHandler={onSubmitHandler} />
+      <TestError />
+      <ProductsList s={s} />
+    </>
+  );
+};
 
 export default Shop;
