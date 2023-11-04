@@ -7,7 +7,7 @@ class Shop extends Component {
   state = {
     s: localStorage.getItem('searchInput') || '',
   };
-  onSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
+  onSubmitHandler = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     const target = event.target as typeof event.target & {
       s: { value: string };
