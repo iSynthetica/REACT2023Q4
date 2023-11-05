@@ -13,7 +13,7 @@ interface ProductsListProps {
 const ProductsList = ({ s }: ProductsListProps) => {
   let { page } = useParams();
   const [products, setProducts] = useState([] as ProductI[]);
-  const [perPage, setPerPage] = useState(10);
+  const [perPage, setPerPage] = useState(25);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [total, setTotal] = useState(0);
