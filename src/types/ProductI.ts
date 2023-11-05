@@ -2,6 +2,7 @@ interface ProductI {
   id: number;
   name: string;
   description: string;
+  short_description: string;
   images: ImageI[];
 }
 

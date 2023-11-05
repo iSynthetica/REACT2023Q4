@@ -1,6 +1,11 @@
 import ProductI from '../types/ProductI';
 
-const ProductItem = ({ name, description, images }: ProductI) => {
+const ProductItem = ({
+  name,
+  description,
+  images,
+  short_description,
+}: ProductI) => {
   return (
     <>
       <article>
@@ -9,7 +14,11 @@ const ProductItem = ({ name, description, images }: ProductI) => {
         </div>
         <div className="descriptionContainer">
           <h3>{name}</h3>
-          <div dangerouslySetInnerHTML={{ __html: description }} />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: short_description || description,
+            }}
+          />
         </div>
       </article>
     </>
