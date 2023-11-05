@@ -1,6 +1,8 @@
+import { NavLink } from 'react-router-dom';
 import ProductI from '../types/ProductI';
 
 const ProductItem = ({
+  id,
   name,
   description,
   images,
@@ -19,6 +21,7 @@ const ProductItem = ({
               __html: short_description || description,
             }}
           />
+          <NavLink to={`product/${id}`}>Product details</NavLink>
         </div>
       </article>
     </>

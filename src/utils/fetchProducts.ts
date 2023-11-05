@@ -4,6 +4,31 @@ const host = 'https://shop.synthetica.com.ua//wp-json/wc/v3';
 const token =
   'Y2tfOTNmOTkyZTA5ZjE1MTM5NzFiZjIwYWUwZDkyZWEyNzdmNWVmYTMzMjpjc18wYWE0ZGUxMzNlYzYxOGM1NWU3MjZiM2MxNWY4ODdkOTNiOWU3YTQy';
 
+export const fetchProduct = async (
+  id: number
+): Promise<{ product: ProductI | null; error: boolean }> => {
+  const url = `${host}/products/${id}`;
+  const headers = new Headers();
+  headers.append('Authorization', `Basic ${token}`);
+  const options = {
+    method: 'GET',
+    headers,
+  };
+
+  try {
+    const response = await fetch(url, options);
+
+    const product: ProductI = await response.json();
+
+    return {
+      product,
+      error: false,
+    };
+  } catch (err) {
+    return { product: null, error: true };
+  }
+};
+
 const fetchProducts = async (
   page = 1,
   perPage = 10,
