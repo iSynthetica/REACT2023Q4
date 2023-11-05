@@ -122,6 +122,23 @@ ul {
   background-color: blue;
   color: white;
 }
+#selectPerPage {
+  padding: 0.938rem;
+  background-color: #ccc;
+  margin-bottom: 0.938rem;
+}
+#selectPerPage h4 {
+  text-align: center;
+}
+#selectPerPage h4  span {
+  display: inline-block;
+  margin-right: 2rem;
+}
+#selectPerPage select {
+  font-size: 1rem;
+  padding: 0.625rem 1rem;
+  font-weight: 900;
+}
 
 @media (max-width: 575px) {
   #contentContainer article {

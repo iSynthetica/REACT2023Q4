@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import ProductItem from './ProductItem';
 import ProductI from '../types/ProductI';
 import fetchProducts from '../utils/fetchProducts';
@@ -13,11 +13,15 @@ interface ProductsListProps {
 const ProductsList = ({ s }: ProductsListProps) => {
   let { page } = useParams();
   const [products, setProducts] = useState([] as ProductI[]);
-  const [perPage] = useState(10);
+  const [perPage, setPerPage] = useState(10);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+
+  const onPerPageChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setPerPage(Number(event.target.value));
+  };
 
   const renderResultTitle = () => {
     return !products.length
@@ -31,7 +35,7 @@ const ProductsList = ({ s }: ProductsListProps) => {
                   description.`;
   };
 
-  const fetchAllProducts = (s = '') => {
+  const fetchAllProducts = () => {
     setIsLoading(true);
     setIsError(false);
     setProducts([]);
@@ -57,8 +61,8 @@ const ProductsList = ({ s }: ProductsListProps) => {
   };
 
   useEffect(() => {
-    fetchAllProducts(s);
-  }, [s, page]);
+    fetchAllProducts();
+  }, [s, page, perPage]);
 
   return (
     <>
@@ -70,7 +74,10 @@ const ProductsList = ({ s }: ProductsListProps) => {
             <h3 id="resultTitle">{renderResultTitle()}</h3>
 
             <div id="selectPerPage">
-              <SelectPerPage />
+              <SelectPerPage
+                perPage={perPage}
+                onPerPageChange={onPerPageChange}
+              />
             </div>
 
             <div id="productsList">
