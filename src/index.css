@@ -103,7 +103,7 @@ ul {
 }
 
 #productsList {
-  display: flex;
+  /* display: flex; */
 }
 
 @media (max-width: 575px) {
