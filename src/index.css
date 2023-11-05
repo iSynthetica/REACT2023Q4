@@ -102,8 +102,25 @@ ul {
   padding: 0.188rem 0.5rem;
 }
 
-#productsList {
-  /* display: flex; */
+#pages {
+  list-style: none;
+  text-align: center;
+  width: 56.25rem;
+  max-width: 90%;
+  margin: auto;
+}
+.pageItem {
+  display: inline-block;
+  margin: 0.125rem;
+}
+
+.pageItem span, .pageItem a {
+  padding: 0.313rem 0.563rem;
+}
+
+.pageItem span {
+  background-color: blue;
+  color: white;
 }
 
 @media (max-width: 575px) {

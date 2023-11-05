@@ -5,6 +5,8 @@ const token =
   'Y2tfOTNmOTkyZTA5ZjE1MTM5NzFiZjIwYWUwZDkyZWEyNzdmNWVmYTMzMjpjc18wYWE0ZGUxMzNlYzYxOGM1NWU3MjZiM2MxNWY4ODdkOTNiOWU3YTQy';
 
 const fetchProducts = async (
+  page = 1,
+  perPage = 10,
   s = ''
 ): Promise<{
   products: ProductI[];
@@ -13,7 +15,7 @@ const fetchProducts = async (
   totalPages: number;
 }> => {
   const sParam = s ? `&search=${s}` : '';
-  const url = `${host}/products?per_page=10${sParam}`;
+  const url = `${host}/products?per_page=${perPage}&page=${page}${sParam}`;
   const headers = new Headers();
   headers.append('Authorization', `Basic ${token}`);
   const options = {
