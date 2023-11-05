@@ -67,12 +67,53 @@ input {
 
 #contentContainer {
   padding: 1rem;
+  position: relative;
 }
 
 #contentContainer article {
+  padding: 1rem 0;
   margin: 5px;
   display: flex;
   margin-bottom: 1.563rem;
+  margin-top: 0;
+}
+#overlay {
+  display: none;
+}
+.prodactDetailsActive #overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#overlay a {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#productDetails {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  width: 900px;
+  max-width: 80%;
+  background-color: white;
+  padding: 1rem;
+}
+
+#closeButton {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  font-size: 30px;
 }
 
 ul {

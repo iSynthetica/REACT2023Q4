@@ -3,7 +3,7 @@ import ProductItem from './ProductItem';
 import ProductI from '../types/ProductI';
 import fetchProducts from '../utils/fetchProducts';
 import Pagination from './Pagination';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
 import SelectPerPage from './SelectPerPage';
 
 interface ProductsListProps {
@@ -12,6 +12,7 @@ interface ProductsListProps {
 
 const ProductsList = ({ s }: ProductsListProps) => {
   let { page } = useParams();
+  const { id } = useParams();
   const [products, setProducts] = useState([] as ProductI[]);
   const [perPage, setPerPage] = useState(25);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,6 +24,10 @@ const ProductsList = ({ s }: ProductsListProps) => {
   const onPerPageChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setPerPage(Number(event.target.value));
     navigate('/');
+  };
+
+  const getConteinerClassName = () => {
+    return id ? 'prodactDetailsActive' : '';
   };
 
   const renderResultTitle = () => {
@@ -66,7 +71,7 @@ const ProductsList = ({ s }: ProductsListProps) => {
 
   return (
     <>
-      <section id="contentContainer">
+      <section id="contentContainer" className={getConteinerClassName()}>
         {isLoading ? (
           <p className="loadingContainer">Loading...</p>
         ) : (
@@ -84,6 +89,10 @@ const ProductsList = ({ s }: ProductsListProps) => {
               {products.map((product: ProductI) => (
                 <ProductItem key={product.id} {...product} />
               ))}
+            </div>
+
+            <div id="overlay">
+              <NavLink to=".." />
             </div>
 
             <Outlet />

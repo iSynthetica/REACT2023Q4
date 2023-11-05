@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchProduct } from '../utils/fetchProducts';
 import ProductI from '../types/ProductI';
+import { NavLink } from 'react-router-dom';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -49,6 +50,10 @@ const ProductDetails = () => {
                 __html: product.price_html,
               }}
             />
+
+            <NavLink id="closeButton" to="..">
+              &#10060;
+            </NavLink>
           </>
         ) : (
           <h4>Not found</h4>

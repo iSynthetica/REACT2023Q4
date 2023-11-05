@@ -21,7 +21,9 @@ const ProductItem = ({
               __html: short_description || description,
             }}
           />
-          <NavLink to={`product/${id}`}>Product details</NavLink>
+          <NavLink to={`product/${id}`} preventScrollReset={true}>
+            Product details
+          </NavLink>
         </div>
       </article>
     </>
