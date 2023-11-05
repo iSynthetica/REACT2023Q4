@@ -10,8 +10,6 @@ const Pagination = ({ totalPages, currentPage }: Props) => {
     <>
       <ul id="pages">
         {[...Array(totalPages + 1).keys()].slice(1).map((page) => {
-          console.log(page);
-
           return totalPages === 1 ? (
             ''
           ) : (

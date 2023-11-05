@@ -3,7 +3,7 @@ import ProductItem from './ProductItem';
 import ProductI from '../types/ProductI';
 import fetchProducts from '../utils/fetchProducts';
 import Pagination from './Pagination';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import SelectPerPage from './SelectPerPage';
 
 interface ProductsListProps {
@@ -46,8 +46,6 @@ const ProductsList = ({ s }: ProductsListProps) => {
       fetchProducts(Number(page), perPage, s).then(
         ({ products, error, total, totalPages }) => {
           if (error) throw new Error();
-
-          console.log([...Array(totalPages + 1).keys()].slice(1));
 
           setTotal(total);
           setTotalPages(totalPages);
@@ -92,6 +90,8 @@ const ProductsList = ({ s }: ProductsListProps) => {
                 currentPage={Number(page) || 1}
               />
             </div>
+
+            <Outlet />
           </>
         )}
       </section>
