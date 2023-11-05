@@ -3,7 +3,7 @@ import ProductItem from './ProductItem';
 import ProductI from '../types/ProductI';
 import fetchProducts from '../utils/fetchProducts';
 import Pagination from './Pagination';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import SelectPerPage from './SelectPerPage';
 
 interface ProductsListProps {
@@ -18,9 +18,11 @@ const ProductsList = ({ s }: ProductsListProps) => {
   const [isError, setIsError] = useState(false);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const navigate = useNavigate();
 
   const onPerPageChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setPerPage(Number(event.target.value));
+    navigate('/');
   };
 
   const renderResultTitle = () => {
@@ -84,14 +86,14 @@ const ProductsList = ({ s }: ProductsListProps) => {
               ))}
             </div>
 
+            <Outlet />
+
             <div id="pagination">
               <Pagination
                 totalPages={totalPages}
                 currentPage={Number(page) || 1}
               />
             </div>
-
-            <Outlet />
           </>
         )}
       </section>
