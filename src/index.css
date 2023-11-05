@@ -102,6 +102,10 @@ ul {
   padding: 0.188rem 0.5rem;
 }
 
+#productsList {
+  display: flex;
+}
+
 @media (max-width: 575px) {
   #contentContainer article {
     display: block;

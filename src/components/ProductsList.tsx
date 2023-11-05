@@ -11,6 +11,8 @@ const ProductsList = ({ s }: ProductsListProps) => {
   const [products, setProducts] = useState([] as ProductI[]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [total, setTotal] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
   const renderProducts = () => {
     return products.map((product: ProductI) => (
@@ -20,14 +22,14 @@ const ProductsList = ({ s }: ProductsListProps) => {
 
   const renderResultTitle = () => {
     return !products.length
-      ? 'Nothing found, try another request'
+      ? 'Nothing found, try another request.'
       : s
-      ? `Search result for ${s} found in
-                  products titles and descriptions`
+      ? `Search result for ${s} found ${total} products in
+                  products titles and descriptions. Total pages ${totalPages}.`
       : isError
-      ? `Something went wrong try again`
-      : `Type into search field for filtering products by title or
-                  description`;
+      ? `Something went wrong try again.`
+      : `Total products ${total}. Total pages ${totalPages}. Type into search field for filtering products by title or
+                  description.`;
   };
 
   const fetchAllProducts = (s = '') => {
@@ -36,8 +38,11 @@ const ProductsList = ({ s }: ProductsListProps) => {
     setProducts([]);
 
     try {
-      fetchProducts(s).then(({ products, error }) => {
+      fetchProducts(s).then(({ products, error, total, totalPages }) => {
         if (error) throw new Error();
+
+        setTotal(total);
+        setTotalPages(totalPages);
         setIsLoading(false);
         setProducts(products);
       });
@@ -59,7 +64,7 @@ const ProductsList = ({ s }: ProductsListProps) => {
           <>
             <h3 id="resultTitle">{renderResultTitle()}</h3>
 
-            {renderProducts()}
+            <div id="productsList">{renderProducts()}</div>
           </>
         )}
       </section>

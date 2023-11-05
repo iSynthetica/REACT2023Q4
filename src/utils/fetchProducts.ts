@@ -6,9 +6,14 @@ const token =
 
 const fetchProducts = async (
   s = ''
-): Promise<{ products: ProductI[]; error: boolean }> => {
+): Promise<{
+  products: ProductI[];
+  error: boolean;
+  total: number;
+  totalPages: number;
+}> => {
   const sParam = s ? `&search=${s}` : '';
-  const url = `${host}/products?per_page=25${sParam}`;
+  const url = `${host}/products?per_page=10${sParam}`;
   const headers = new Headers();
   headers.append('Authorization', `Basic ${token}`);
   const options = {
@@ -18,11 +23,19 @@ const fetchProducts = async (
 
   try {
     const response = await fetch(url, options);
-    const products: ProductI[] = await response.json();
 
-    return { products, error: false };
+    const products: ProductI[] = await response.json();
+    const total = response.headers.get('x-wp-total');
+    const totalPages = response.headers.get('x-wp-totalpages');
+
+    return {
+      products,
+      error: false,
+      total: Number(total),
+      totalPages: Number(totalPages),
+    };
   } catch (err) {
-    return { products: [], error: true };
+    return { products: [], error: true, total: 0, totalPages: 0 };
   }
 };
 
