@@ -1,18 +1,14 @@
-import { ChangeEventHandler } from 'react';
+import { useSearchContext } from '../../context/searchContext';
+import './SelectPerPage.css';
 
-const SelectPerPage = ({
-  perPage,
-  onPerPageChange,
-}: {
-  onPerPageChange: ChangeEventHandler<HTMLSelectElement>;
-  perPage: number;
-}) => {
+const SelectPerPage = () => {
+  const { onChangePageHandler, perPage } = useSearchContext();
   return (
     <>
       <div id="selectPerPage">
         <h4>
           <span>Per page: </span>
-          <select name="" onChange={onPerPageChange} value={perPage}>
+          <select name="" onChange={onChangePageHandler} value={perPage}>
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="25">25</option>

@@ -1,21 +1,11 @@
-import { ChangeEvent } from 'react';
-import SelectPerPage from '../SelectPerPage';
+import SelectPerPage from '../SelectPerPage/SelectPerPage';
 import './Footer.css';
-import { useSearchContext } from '../../context/searchContext';
 
-interface Props {
-  onChangePageHandler: (event: ChangeEvent<HTMLSelectElement>) => void;
-}
-
-const Footer = ({ onChangePageHandler }: Props) => {
-  const { perPage } = useSearchContext();
+const Footer = () => {
   return (
     <>
       <section id="footer">
-        <SelectPerPage
-          perPage={perPage}
-          onPerPageChange={onChangePageHandler}
-        />
+        <SelectPerPage />
       </section>
     </>
   );

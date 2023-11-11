@@ -1,0 +1,15 @@
+#selectPerPage {
+  padding: 0.938rem;
+}
+#selectPerPage h4 {
+  text-align: center;
+}
+#selectPerPage h4 span {
+  display: inline-block;
+  margin-right: 2rem;
+}
+#selectPerPage select {
+  font-size: 1rem;
+  padding: 0.625rem 1rem;
+  font-weight: 900;
+}

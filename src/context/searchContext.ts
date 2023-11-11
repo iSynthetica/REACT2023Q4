@@ -1,8 +1,10 @@
-import { createContext, useContext } from 'react';
+import { ChangeEvent, FormEvent, createContext, useContext } from 'react';
 
 interface ContextProps {
   s: string;
   perPage: number;
+  onSubmitHandler: (event: FormEvent<HTMLFormElement>) => void;
+  onChangePageHandler: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
 export const SearchContext = createContext<ContextProps | undefined>(undefined);

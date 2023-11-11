@@ -22,11 +22,13 @@ const Shop = () => {
   };
   return (
     <>
-      <SearchContext.Provider value={{ s, perPage }}>
-        <Search onSubmitHandler={onSubmitHandler} />
+      <SearchContext.Provider
+        value={{ s, perPage, onSubmitHandler, onChangePageHandler }}
+      >
+        <Search />
         <TestError />
         <ProductsList />
-        <Footer onChangePageHandler={onChangePageHandler} />
+        <Footer />
       </SearchContext.Provider>
     </>
   );
