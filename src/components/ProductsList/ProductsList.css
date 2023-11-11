@@ -1,8 +1,8 @@
 #contentContainer {
   position: fixed;
   top: 3.75rem;
-  bottom: 3.75rem;
-  overflow: scroll;
+  bottom: 3.25rem;
+  overflow-y: auto;
   background-color: white;
   width: 100%;
 }

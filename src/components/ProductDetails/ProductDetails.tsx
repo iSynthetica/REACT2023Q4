@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchProduct } from '../utils/fetchProducts';
-import ProductI from '../types/ProductI';
+import { fetchProduct } from '../../utils/fetchProducts';
+import ProductI from '../../types/ProductI';
 import { NavLink } from 'react-router-dom';
+import './ProductDetails.css';
 
 const ProductDetails = () => {
   const { id } = useParams();

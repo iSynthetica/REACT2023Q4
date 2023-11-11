@@ -1,8 +1,19 @@
-import { ChangeEvent, FormEvent, createContext, useContext } from 'react';
+import {
+  ChangeEvent,
+  Dispatch,
+  FormEvent,
+  createContext,
+  useContext,
+} from 'react';
 
 interface ContextProps {
   s: string;
+  page: number;
   perPage: number;
+  total: number;
+  totalPages: number;
+  setTotal: Dispatch<React.SetStateAction<number>>;
+  setTotalPages: Dispatch<React.SetStateAction<number>>;
   onSubmitHandler: (event: FormEvent<HTMLFormElement>) => void;
   onChangePageHandler: (event: ChangeEvent<HTMLSelectElement>) => void;
 }

@@ -69,7 +69,7 @@ input {
 }
 .prodactDetailsActive #overlay {
   display: block;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -83,24 +83,6 @@ input {
   right: 0;
   bottom: 0;
   left: 0;
-}
-
-#productDetails {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  bottom: 10px;
-  width: 900px;
-  max-width: 80%;
-  background-color: white;
-  padding: 1rem;
-}
-
-#closeButton {
-  position: absolute;
-  top: 0;
-  right: 8px;
-  font-size: 30px;
 }
 
 ul {

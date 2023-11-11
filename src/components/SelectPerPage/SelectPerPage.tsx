@@ -8,7 +8,7 @@ const SelectPerPage = () => {
       <div id="selectPerPage">
         <h4>
           <span>Per page: </span>
-          <select name="" onChange={onChangePageHandler} value={perPage}>
+          <select onChange={onChangePageHandler} value={perPage}>
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="25">25</option>

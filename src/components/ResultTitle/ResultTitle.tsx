@@ -3,13 +3,11 @@ import ProductI from '../../types/ProductI';
 
 interface Props {
   products: ProductI[];
-  total: number;
-  totalPages: number;
   isError: boolean;
 }
 
-const ResultTitle = ({ products, total, totalPages, isError }: Props) => {
-  const { s } = useSearchContext();
+const ResultTitle = ({ products, isError }: Props) => {
+  const { s, total, totalPages } = useSearchContext();
   return (
     <>
       <h3 id="resultTitle">
@@ -18,8 +16,8 @@ const ResultTitle = ({ products, total, totalPages, isError }: Props) => {
         ) : s ? (
           <div
             dangerouslySetInnerHTML={{
-              __html: `Search result for ${s} found ${total} products in
-                  products titles and descriptions. Total pages ${totalPages}.`,
+              __html: `Search result for <strong>${s}</strong> found <strong>${total}</strong> products in
+                  products titles and descriptions. Total pages <strong>${totalPages}</strong>.`,
             }}
           />
         ) : isError ? (
@@ -27,7 +25,7 @@ const ResultTitle = ({ products, total, totalPages, isError }: Props) => {
         ) : (
           <div
             dangerouslySetInnerHTML={{
-              __html: `Total products ${total}. Total pages ${totalPages}. Type into search field for filtering products by title or
+              __html: `Total products <strong>${total}</strong>. Total pages <strong>${totalPages}</strong>. Type into search field for filtering products by title or
                   description.`,
             }}
           />
