@@ -6,6 +6,7 @@ import Pagination from '../Pagination';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { useSearchContext } from '../../context/searchContext';
 import './ProductsList.css';
+import ResultTitle from '../ResultTitle/ResultTitle';
 
 const ProductsList = () => {
   const { s, perPage } = useSearchContext();
@@ -19,18 +20,6 @@ const ProductsList = () => {
 
   const getConteinerClassName = () => {
     return id ? 'prodactDetailsActive' : '';
-  };
-
-  const renderResultTitle = () => {
-    return !products.length
-      ? 'Nothing found, try another request.'
-      : s
-      ? `Search result for ${s} found ${total} products in
-                  products titles and descriptions. Total pages ${totalPages}.`
-      : isError
-      ? `Something went wrong try again.`
-      : `Total products ${total}. Total pages ${totalPages}. Type into search field for filtering products by title or
-                  description.`;
   };
 
   const fetchAllProducts = () => {
@@ -67,7 +56,12 @@ const ProductsList = () => {
           <p className="loadingContainer">Loading...</p>
         ) : (
           <>
-            <h3 id="resultTitle">{renderResultTitle()}</h3>
+            <ResultTitle
+              products={products}
+              total={total}
+              totalPages={totalPages}
+              isError={isError}
+            />
 
             <div id="productsList">
               {products.map((product: ProductI) => (
