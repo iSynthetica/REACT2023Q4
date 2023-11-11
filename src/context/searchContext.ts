@@ -1,6 +1,10 @@
 import { createContext, useContext } from 'react';
 
-export const SearchContext = createContext<string | undefined>(undefined);
+interface ContextProps {
+  s: string;
+}
+
+export const SearchContext = createContext<ContextProps | undefined>(undefined);
 
 export function useSearchContext() {
   const s = useContext(SearchContext);

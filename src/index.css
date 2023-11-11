@@ -42,19 +42,6 @@ button {
   border: 1px solid green;
   font-weight: 900;
 }
-#searchContainer {
-  padding: 1rem;
-  background-color: rgb(224, 224, 224);
-  text-align: center;
-}
-#searchContainer button {
-  background-color: green;
-  color: white;
-  cursor: pointer;
-}
-#searchContainer button:hover {
-  background-color: rgb(0, 101, 0);
-}
 input {
   border-right: none;
   color: rgb(18, 145, 18);
@@ -155,7 +142,8 @@ ul {
   margin: 0.125rem;
 }
 
-.pageItem span, .pageItem a {
+.pageItem span,
+.pageItem a {
   font-weight: 900;
   display: inline-block;
   width: 2.5rem;
@@ -184,7 +172,7 @@ ul {
 #selectPerPage h4 {
   text-align: center;
 }
-#selectPerPage h4  span {
+#selectPerPage h4 span {
   display: inline-block;
   margin-right: 2rem;
 }

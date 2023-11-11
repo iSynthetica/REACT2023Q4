@@ -1,32 +1,26 @@
 import { FormEvent, useState } from 'react';
-import Search from '../components/Search';
-import ProductsList from '../components/ProductsList';
+import Search from '../components/Search/Search';
+import ProductsList from '../components/ProductsList/ProductsList';
 import TestError from '../components/TestError';
 import { useNavigate } from 'react-router-dom';
 import { SearchContext } from '../context/searchContext';
+import { onSearchSubmitHandler } from '../utils/handlers';
+import Footer from '../components/Footer/Footer';
 
 const Shop = () => {
   const [s, setSearch] = useState(localStorage.getItem('searchInput') || '');
   const navigate = useNavigate();
 
   const onSubmitHandler = (event: FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-    const target = event.target as typeof event.target & {
-      s: { value: string };
-    };
-
-    const s = target.s.value.trim();
-
-    localStorage.setItem('searchInput', s);
-    setSearch(s);
-    navigate('/');
+    onSearchSubmitHandler(event, setSearch, navigate);
   };
   return (
     <>
-      <SearchContext.Provider value={s}>
+      <SearchContext.Provider value={{ s }}>
         <Search onSubmitHandler={onSubmitHandler} />
         <TestError />
         <ProductsList />
+        <Footer />
       </SearchContext.Provider>
     </>
   );
