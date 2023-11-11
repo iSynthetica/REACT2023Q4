@@ -8,20 +8,20 @@ import './ProductsList.css';
 import ResultTitle from '../ResultTitle/ResultTitle';
 
 const ProductsList = () => {
-  const { s, perPage, page, setTotal, setTotalPages } = useSearchContext();
+  const { s, perPage, page, products, setProducts, setTotal, setTotalPages } =
+    useSearchContext();
   const { id } = useParams();
-  const [products, setProducts] = useState([] as ProductI[]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  const getConteinerClassName = () => {
-    return id ? 'prodactDetailsActive' : '';
-  };
+  const getConteinerClassName = () => (id ? 'prodactDetailsActive' : '');
 
   const fetchAllProducts = () => {
     setIsLoading(true);
     setIsError(false);
     setProducts([]);
+    setTotal(0);
+    setTotalPages(0);
 
     try {
       fetchProducts(Number(page), perPage, s).then(

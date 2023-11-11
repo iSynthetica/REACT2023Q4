@@ -5,13 +5,16 @@ import {
   createContext,
   useContext,
 } from 'react';
+import ProductI from '../types/ProductI';
 
 interface ContextProps {
   s: string;
+  products: ProductI[];
   page: number;
   perPage: number;
   total: number;
   totalPages: number;
+  setProducts: Dispatch<React.SetStateAction<ProductI[]>>;
   setTotal: Dispatch<React.SetStateAction<number>>;
   setTotalPages: Dispatch<React.SetStateAction<number>>;
   onSubmitHandler: (event: FormEvent<HTMLFormElement>) => void;

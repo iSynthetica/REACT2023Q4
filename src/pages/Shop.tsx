@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { SearchContext } from '../context/searchContext';
 import { changePerPageHandler, submitHandler } from '../utils/handlers';
 import Footer from '../components/Footer/Footer';
+import ProductI from '../types/ProductI';
 
 const Shop = () => {
   const { page } = useParams();
@@ -13,6 +14,7 @@ const Shop = () => {
   const [perPage, setPerPage] = useState(25);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [products, setProducts] = useState([] as ProductI[]);
 
   const navigate = useNavigate();
 
@@ -28,10 +30,12 @@ const Shop = () => {
       <SearchContext.Provider
         value={{
           s,
+          products,
           page: page ? Number(page) : 1,
           perPage,
           total,
           totalPages,
+          setProducts,
           setTotal,
           setTotalPages,
           onSubmitHandler,
