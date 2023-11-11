@@ -3,6 +3,7 @@ import Search from '../components/Search';
 import ProductsList from '../components/ProductsList';
 import TestError from '../components/TestError';
 import { useNavigate } from 'react-router-dom';
+import { SearchContext } from '../context/searchContext';
 
 const Shop = () => {
   const [s, setSearch] = useState(localStorage.getItem('searchInput') || '');
@@ -22,9 +23,11 @@ const Shop = () => {
   };
   return (
     <>
-      <Search s={s} onSubmitHandler={onSubmitHandler} />
-      <TestError />
-      <ProductsList s={s} />
+      <SearchContext.Provider value={s}>
+        <Search onSubmitHandler={onSubmitHandler} />
+        <TestError />
+        <ProductsList />
+      </SearchContext.Provider>
     </>
   );
 };

@@ -1,16 +1,14 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import ProductItem from './ProductItem';
 import ProductI from '../types/ProductI';
 import fetchProducts from '../utils/fetchProducts';
 import Pagination from './Pagination';
 import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
 import SelectPerPage from './SelectPerPage';
+import { SearchContext } from '../context/searchContext';
 
-interface ProductsListProps {
-  s: string;
-}
-
-const ProductsList = ({ s }: ProductsListProps) => {
+const ProductsList = () => {
+  const s = useContext(SearchContext);
   let { page } = useParams();
   const { id } = useParams();
   const [products, setProducts] = useState([] as ProductI[]);

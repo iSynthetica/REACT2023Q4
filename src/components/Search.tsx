@@ -1,11 +1,12 @@
 import { FormEvent } from 'react';
+import { useSearchContext } from '../context/searchContext';
 
 interface SearchProps {
-  s: string;
   onSubmitHandler: (event: FormEvent<HTMLFormElement>) => void;
 }
 
-const Search = ({ s, onSubmitHandler }: SearchProps) => {
+const Search = ({ onSubmitHandler }: SearchProps) => {
+  const s = useSearchContext();
   return (
     <>
       <section id="searchContainer">
