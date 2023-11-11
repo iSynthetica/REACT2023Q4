@@ -1,7 +1,7 @@
-import { Dispatch, FormEvent } from 'react';
+import { ChangeEvent, Dispatch, FormEvent } from 'react';
 import { NavigateFunction } from 'react-router-dom';
 
-export const onSearchSubmitHandler = (
+export const submitHandler = (
   event: FormEvent<HTMLFormElement>,
   cb: Dispatch<React.SetStateAction<string>>,
   navigate: NavigateFunction
@@ -15,5 +15,14 @@ export const onSearchSubmitHandler = (
 
   localStorage.setItem('searchInput', s);
   cb(s);
+  navigate('/');
+};
+
+export const changePerPageHandler = (
+  event: ChangeEvent<HTMLSelectElement>,
+  cb: Dispatch<React.SetStateAction<number>>,
+  navigate: NavigateFunction
+): void => {
+  cb(Number(event.target.value));
   navigate('/');
 };

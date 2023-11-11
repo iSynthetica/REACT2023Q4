@@ -1,29 +1,21 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductItem from '../ProductItem';
 import ProductI from '../../types/ProductI';
 import fetchProducts from '../../utils/fetchProducts';
 import Pagination from '../Pagination';
-import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
-import SelectPerPage from '../SelectPerPage';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { useSearchContext } from '../../context/searchContext';
 import './ProductsList.css';
 
 const ProductsList = () => {
-  const { s } = useSearchContext();
+  const { s, perPage } = useSearchContext();
   let { page } = useParams();
   const { id } = useParams();
   const [products, setProducts] = useState([] as ProductI[]);
-  const [perPage, setPerPage] = useState(25);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const navigate = useNavigate();
-
-  const onPerPageChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setPerPage(Number(event.target.value));
-    navigate('/');
-  };
 
   const getConteinerClassName = () => {
     return id ? 'prodactDetailsActive' : '';
@@ -76,13 +68,6 @@ const ProductsList = () => {
         ) : (
           <>
             <h3 id="resultTitle">{renderResultTitle()}</h3>
-
-            <div id="selectPerPage">
-              <SelectPerPage
-                perPage={perPage}
-                onPerPageChange={onPerPageChange}
-              />
-            </div>
 
             <div id="productsList">
               {products.map((product: ProductI) => (

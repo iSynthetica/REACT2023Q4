@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react';
 
 interface ContextProps {
   s: string;
+  perPage: number;
 }
 
 export const SearchContext = createContext<ContextProps | undefined>(undefined);
