@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import ProductI from '../types/ProductI';
+import ProductI from '../../types/ProductI';
 
 const ProductItem = ({
   id,

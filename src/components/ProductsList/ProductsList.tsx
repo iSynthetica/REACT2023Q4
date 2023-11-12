@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import ProductItem from '../ProductItem';
+import ProductItem from '../ProductItem/ProductItem';
 import ProductI from '../../types/ProductI';
 import fetchProducts from '../../utils/fetchProducts';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
-import { useSearchContext } from '../../context/searchContext';
 import './ProductsList.css';
 import ResultTitle from '../ResultTitle/ResultTitle';
+import { useAppContext } from '../../context/AppProvider';
 
 const ProductsList = () => {
   const { s, perPage, page, products, setProducts, setTotal, setTotalPages } =
-    useSearchContext();
+    useAppContext();
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);

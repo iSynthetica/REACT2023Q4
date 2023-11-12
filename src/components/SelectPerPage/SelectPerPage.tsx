@@ -1,8 +1,8 @@
-import { useSearchContext } from '../../context/searchContext';
+import { useAppContext } from '../../context/AppProvider';
 import './SelectPerPage.css';
 
 const SelectPerPage = () => {
-  const { onChangePageHandler, perPage } = useSearchContext();
+  const { onChangePageHandler, perPage } = useAppContext();
   return (
     <>
       <div id="selectPerPage">

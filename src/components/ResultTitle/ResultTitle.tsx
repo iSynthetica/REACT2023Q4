@@ -1,4 +1,4 @@
-import { useSearchContext } from '../../context/searchContext';
+import { useAppContext } from '../../context/AppProvider';
 import ProductI from '../../types/ProductI';
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 const ResultTitle = ({ products, isError }: Props) => {
-  const { s, total, totalPages } = useSearchContext();
+  const { s, total, totalPages } = useAppContext();
   return (
     <>
       <h3 id="resultTitle">

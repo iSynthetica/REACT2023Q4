@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { useSearchContext } from '../../context/searchContext';
 import { ChangeEvent } from 'react';
+import { useAppContext } from '../../context/AppProvider';
 
 const Pagination = () => {
-  const { page, totalPages } = useSearchContext();
+  const { page, totalPages } = useAppContext();
   const navigate = useNavigate();
   const onChangePageHandler = (event: ChangeEvent<HTMLSelectElement>): void => {
     const page = Number(event.target.value);
@@ -17,7 +17,11 @@ const Pagination = () => {
             <span>Page: </span>
             <select value={page} onChange={onChangePageHandler}>
               {[...Array(totalPages + 1).keys()].slice(1).map((pageIndex) => {
-                return <option value={pageIndex}>{pageIndex}</option>;
+                return (
+                  <option key={pageIndex} value={pageIndex}>
+                    {pageIndex}
+                  </option>
+                );
               })}
             </select>
           </h4>

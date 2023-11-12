@@ -1,8 +1,8 @@
-import { useSearchContext } from '../../context/searchContext';
 import './Search.css';
+import { useAppContext } from '../../context/AppProvider';
 
 const Search = () => {
-  const { s, onSubmitHandler } = useSearchContext();
+  const { s, onSubmitHandler } = useAppContext();
 
   return (
     <>
