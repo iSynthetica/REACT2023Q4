@@ -1,4 +1,4 @@
-import Pagination from '../Pagination';
+import Pagination from '../Pagination/Pagination';
 import SelectPerPage from '../SelectPerPage/SelectPerPage';
 import './Footer.css';
 

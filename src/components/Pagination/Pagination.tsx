@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useSearchContext } from '../context/searchContext';
+import { useSearchContext } from '../../context/searchContext';
 import { ChangeEvent } from 'react';
 
 const Pagination = () => {

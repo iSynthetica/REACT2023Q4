@@ -7,6 +7,7 @@ function App() {
   return (
     <>
       <ErrorBoundary>
+        <h1>Hello World</h1>
         <Outlet />
       </ErrorBoundary>
     </>
