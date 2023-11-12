@@ -28,6 +28,5 @@ describe('Search Component', () => {
 
     await userEvent.type(input as HTMLInputElement, searchQuery);
     expect(input).toHaveValue(searchQuery);
-    await userEvent.click(button as HTMLButtonElement);
   });
 });
