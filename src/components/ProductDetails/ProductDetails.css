@@ -1,0 +1,25 @@
+#productDetails {
+  position: fixed;
+  right: 1.25rem;
+  top: 5rem;
+  bottom: 5rem;
+  width: 900px;
+  max-width: 80%;
+  background-color: white;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+#closeButton {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  font-size: 30px;
+}
+
+@media (min-width: 768px) {
+  #productDetails {
+    top: 6.375rem;
+    bottom: 6.375rem;
+  }
+}
