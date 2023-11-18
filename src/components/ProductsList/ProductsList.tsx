@@ -6,10 +6,13 @@ import { NavLink, Outlet, useParams } from 'react-router-dom';
 import './ProductsList.css';
 import ResultTitle from '../ResultTitle/ResultTitle';
 import { useAppContext } from '../../context/AppProvider';
+import { RootState } from '../../state/store';
+import { useSelector } from 'react-redux';
 
 const ProductsList = () => {
-  const { s, perPage, page, products, setProducts, setTotal, setTotalPages } =
+  const { perPage, page, products, setProducts, setTotal, setTotalPages } =
     useAppContext();
+  const s = useSelector((state: RootState) => state.shop.s);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
