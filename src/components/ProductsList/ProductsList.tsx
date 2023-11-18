@@ -10,9 +10,9 @@ import { RootState } from '../../state/store';
 import { useSelector } from 'react-redux';
 
 const ProductsList = () => {
-  const { perPage, page, products, setProducts, setTotal, setTotalPages } =
+  const { page, products, setProducts, setTotal, setTotalPages } =
     useAppContext();
-  const s = useSelector((state: RootState) => state.shop.s);
+  const { s, perPage } = useSelector((state: RootState) => state.shop);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);

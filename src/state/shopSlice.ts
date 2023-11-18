@@ -17,12 +17,12 @@ const shopSlice = createSlice({
     setSearchInput: (state, action: PayloadAction<string>) => {
       state.s = action.payload;
     },
-    setPerPage: (state, action: PayloadAction<string>) => {
-      state.perPage = Number(action.payload);
+    setPerPage: (state, action: PayloadAction<number>) => {
+      state.perPage = action.payload;
     },
   },
 });
 
-export const { setSearchInput } = shopSlice.actions;
+export const { setSearchInput, setPerPage } = shopSlice.actions;
 
 export default shopSlice.reducer;

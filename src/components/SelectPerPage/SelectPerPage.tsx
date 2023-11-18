@@ -1,14 +1,24 @@
-import { useAppContext } from '../../context/AppProvider';
+import { useDispatch, useSelector } from 'react-redux';
 import './SelectPerPage.css';
+import { RootState } from '../../state/store';
+import { changePerPageHandler } from '../../utils/handlers';
+import { useNavigate } from 'react-router-dom';
 
 const SelectPerPage = () => {
-  const { onChangePageHandler, perPage } = useAppContext();
+  const perPage = useSelector((state: RootState) => state.shop.perPage);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <>
       <div id="selectPerPage">
         <h4>
           <span>Per page: </span>
-          <select onChange={onChangePageHandler} value={perPage}>
+          <select
+            onChange={(event) => {
+              changePerPageHandler(event, dispatch, navigate);
+            }}
+            value={perPage}
+          >
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="25">25</option>
