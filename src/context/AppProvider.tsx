@@ -1,14 +1,6 @@
-import React, { useState, Dispatch, useContext } from 'react';
-import ProductI from '../types/ProductI';
+import React, { useContext } from 'react';
 
-interface ContextProps {
-  products: ProductI[];
-  total: number;
-  totalPages: number;
-  setProducts: Dispatch<React.SetStateAction<ProductI[]>>;
-  setTotal: Dispatch<React.SetStateAction<number>>;
-  setTotalPages: Dispatch<React.SetStateAction<number>>;
-}
+interface ContextProps {}
 
 export const AppContext = React.createContext<ContextProps | undefined>(
   undefined
@@ -25,24 +17,7 @@ export function useAppContext() {
 }
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  const [total, setTotal] = useState(0);
-  const [totalPages, setTotalPages] = useState(0);
-  const [products, setProducts] = useState([] as ProductI[]);
-
-  return (
-    <AppContext.Provider
-      value={{
-        products,
-        total,
-        totalPages,
-        setProducts,
-        setTotal,
-        setTotalPages,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  );
+  return <AppContext.Provider value={{}}>{children}</AppContext.Provider>;
 };
 
 export default AppProvider;

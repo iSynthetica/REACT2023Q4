@@ -19,7 +19,6 @@ const ProductDetails = () => {
       }
       setProduct(resp.product);
       setIsLoading(false);
-      console.log(resp);
     });
   }, [id]);
   return (

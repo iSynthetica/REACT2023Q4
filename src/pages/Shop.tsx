@@ -6,13 +6,15 @@ import AppProvider from '../context/AppProvider';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setPage } from '../state/shopSlice';
+import { useEffect } from 'react';
 
 const Shop = () => {
   const dispatch = useDispatch();
   const { page } = useParams();
-  dispatch(setPage(Number(page) || 1));
 
-  console.log('Shop rendering');
+  useEffect(() => {
+    dispatch(setPage(Number(page) || 1));
+  }, [page]);
 
   return (
     <>

@@ -5,37 +5,37 @@ import fetchProducts from '../../utils/fetchProducts';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import './ProductsList.css';
 import ResultTitle from '../ResultTitle/ResultTitle';
-import { useAppContext } from '../../context/AppProvider';
 import { RootState } from '../../state/store';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTotal, setTotalPages, setProducts } from '../../state/shopSlice';
 
 const ProductsList = () => {
-  const { products, setProducts, setTotal, setTotalPages } = useAppContext();
-  const { s, perPage, page } = useSelector((state: RootState) => state.shop);
+  const dispatch = useDispatch();
+  const { s, perPage, page, products } = useSelector(
+    (state: RootState) => state.shop
+  );
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
   const getConteinerClassName = () => (id ? 'prodactDetailsActive' : '');
 
-  console.log('ProductsList rendering');
-
   const fetchAllProducts = () => {
     setIsLoading(true);
     setIsError(false);
-    setProducts([]);
-    setTotal(0);
-    setTotalPages(0);
+    dispatch(setProducts([]));
+    dispatch(setTotal(0));
+    dispatch(setTotalPages(0));
 
     try {
       fetchProducts(Number(page), perPage, s).then(
         ({ products, error, total, totalPages }) => {
           if (error) throw new Error();
 
-          setTotal(total);
-          setTotalPages(totalPages);
+          dispatch(setTotal(total));
+          dispatch(setTotalPages(totalPages));
           setIsLoading(false);
-          setProducts(products);
+          dispatch(setProducts(products));
         }
       );
     } catch (err) {
