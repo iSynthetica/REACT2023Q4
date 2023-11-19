@@ -6,6 +6,11 @@ interface FetchProductsArgs {
   per_page?: number;
   s?: string;
 }
+interface FetchProductsParams {
+  page?: number;
+  per_page?: number;
+  search?: string;
+}
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
@@ -33,9 +38,9 @@ export const productsApi = createApi({
       FetchProductsArgs
     >({
       query: ({ page = 1, per_page = 25, s = '' }) => {
-        const params: FetchProductsArgs = { page, per_page };
+        const params: FetchProductsParams = { page, per_page };
         if (s.trim()) {
-          params.s = s;
+          params.search = s;
         }
         return {
           url: `/products`,
