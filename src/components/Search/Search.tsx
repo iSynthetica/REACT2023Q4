@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { submitHandler } from '../../utils/handlers';
 
 const Search = () => {
-  // const { onSubmitHandler } = useAppContext();
   const s = useSelector((state: RootState) => state.shop.s);
   const dispatch = useDispatch();
   const navigate = useNavigate();

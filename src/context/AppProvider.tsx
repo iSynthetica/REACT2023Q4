@@ -1,10 +1,8 @@
 import React, { useState, Dispatch, useContext } from 'react';
 import ProductI from '../types/ProductI';
-import { useParams } from 'react-router-dom';
 
 interface ContextProps {
   products: ProductI[];
-  page: number;
   total: number;
   totalPages: number;
   setProducts: Dispatch<React.SetStateAction<ProductI[]>>;
@@ -27,7 +25,6 @@ export function useAppContext() {
 }
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  const { page } = useParams();
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [products, setProducts] = useState([] as ProductI[]);
@@ -36,7 +33,6 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     <AppContext.Provider
       value={{
         products,
-        page: page ? Number(page) : 1,
         total,
         totalPages,
         setProducts,
