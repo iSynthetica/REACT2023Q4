@@ -1,13 +1,22 @@
 import './Search.css';
-import { useAppContext } from '../../context/AppProvider';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
+import { useNavigate } from 'react-router-dom';
+import { submitHandler } from '../../utils/handlers';
 
 const Search = () => {
-  const { s, onSubmitHandler } = useAppContext();
+  const s = useSelector((state: RootState) => state.shop.s);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <>
       <section id="searchContainer">
-        <form onSubmit={onSubmitHandler}>
+        <form
+          onSubmit={(event) => {
+            submitHandler(event, dispatch, navigate);
+          }}
+        >
           <input
             type="text"
             name="s"

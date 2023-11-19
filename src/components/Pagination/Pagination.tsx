@@ -1,12 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { ChangeEvent } from 'react';
-import { useAppContext } from '../../context/AppProvider';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
 
 const Pagination = () => {
-  const { page, totalPages } = useAppContext();
+  const { page, totalPages } = useSelector((state: RootState) => state.shop);
+
   const navigate = useNavigate();
   const onChangePageHandler = (event: ChangeEvent<HTMLSelectElement>): void => {
     const page = Number(event.target.value);
+    // dispatch(setPage(Number(page) || 1));
     navigate(`/page/${page}`);
   };
   return (

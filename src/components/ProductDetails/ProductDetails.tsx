@@ -1,27 +1,13 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchProduct } from '../../utils/fetchProducts';
-import ProductI from '../../types/ProductI';
 import { NavLink } from 'react-router-dom';
 import './ProductDetails.css';
+import { useFetchProductQuery } from '../../api/products';
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null as ProductI | null);
-  const [isLoading, setIsLoading] = useState(true);
+  const { data: product, isLoading } = useFetchProductQuery(Number(id));
 
-  useEffect(() => {
-    setIsLoading(true);
-    setProduct(null);
-    fetchProduct(Number(id)).then((resp) => {
-      if (resp.error) {
-        throw new Error();
-      }
-      setProduct(resp.product);
-      setIsLoading(false);
-      console.log(resp);
-    });
-  }, [id]);
+  console.log(product);
   return (
     <>
       <div id="productDetails">

@@ -1,4 +1,5 @@
-import { useAppContext } from '../../context/AppProvider';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
 import ProductI from '../../types/ProductI';
 
 interface Props {
@@ -7,7 +8,9 @@ interface Props {
 }
 
 const ResultTitle = ({ products, isError }: Props) => {
-  const { s, total, totalPages } = useAppContext();
+  const { s, total, totalPages } = useSelector(
+    (state: RootState) => state.shop
+  );
   return (
     <>
       <h3 id="resultTitle">

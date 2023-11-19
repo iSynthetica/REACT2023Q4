@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import Search from './Search';
-import AppProvider from '../../context/AppProvider';
 import { MemoryRouter } from 'react-router-dom';
+import AppProvider from '../../state/AppProvider';
 
 const searchQuery = 'backpack';
 

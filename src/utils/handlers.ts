@@ -1,9 +1,11 @@
 import { ChangeEvent, Dispatch, FormEvent } from 'react';
 import { NavigateFunction } from 'react-router-dom';
+import { setSearchInput, setPerPage } from '../state/shopSlice';
+import { AnyAction } from '@reduxjs/toolkit';
 
 export const submitHandler = (
   event: FormEvent<HTMLFormElement>,
-  cb: Dispatch<React.SetStateAction<string>>,
+  cb: Dispatch<AnyAction>,
   navigate: NavigateFunction
 ): void => {
   event.preventDefault();
@@ -14,15 +16,15 @@ export const submitHandler = (
   const s = target.s.value.trim();
 
   localStorage.setItem('searchInput', s);
-  cb(s);
+  cb(setSearchInput(s));
   navigate('/');
 };
 
 export const changePerPageHandler = (
   event: ChangeEvent<HTMLSelectElement>,
-  cb: Dispatch<React.SetStateAction<number>>,
+  cb: Dispatch<AnyAction>,
   navigate: NavigateFunction
 ): void => {
-  cb(Number(event.target.value));
+  cb(setPerPage(Number(event.target.value)));
   navigate('/');
 };
