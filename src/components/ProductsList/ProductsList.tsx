@@ -1,51 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import ProductItem from '../ProductItem/ProductItem';
 import ProductI from '../../types/ProductI';
-import fetchProducts from '../../utils/fetchProducts';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import './ProductsList.css';
 import ResultTitle from '../ResultTitle/ResultTitle';
 import { RootState } from '../../state/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTotal, setTotalPages, setProducts } from '../../state/shopSlice';
+import { useFetchProductsQuery } from '../../api/products';
 
 const ProductsList = () => {
-  const dispatch = useDispatch();
   const { s, perPage, page, products } = useSelector(
     (state: RootState) => state.shop
   );
+  const dispatch = useDispatch();
   const { id } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
   const getConteinerClassName = () => (id ? 'prodactDetailsActive' : '');
 
-  const fetchAllProducts = () => {
-    setIsLoading(true);
-    setIsError(false);
-    dispatch(setProducts([]));
-    dispatch(setTotal(0));
-    dispatch(setTotalPages(0));
-
-    try {
-      fetchProducts(Number(page), perPage, s).then(
-        ({ products, error, total, totalPages }) => {
-          if (error) throw new Error();
-
-          dispatch(setTotal(total));
-          dispatch(setTotalPages(totalPages));
-          setIsLoading(false);
-          dispatch(setProducts(products));
-        }
-      );
-    } catch (err) {
-      setIsError(true);
-    }
-  };
+  const { data, isLoading, isError } = useFetchProductsQuery({
+    s,
+    per_page: perPage,
+    page,
+  });
 
   useEffect(() => {
-    fetchAllProducts();
-  }, [s, page, perPage]);
+    if (data) {
+      dispatch(setTotal(data.total));
+      dispatch(setTotalPages(data.totalPages));
+      dispatch(setProducts(data.products));
+    }
+  }, [data, dispatch]);
 
   return (
     <>
