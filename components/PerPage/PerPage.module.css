@@ -1,0 +1,27 @@
+.selectPerPage {
+  display: inline-block;
+  padding: 0.625rem;
+}
+.selectPerPage h4 {
+  text-align: center;
+}
+.selectPerPage h4 span {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.selectPerPage select {
+  font-size: 1rem;
+  padding: 0.313rem 0.375rem;
+  font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  .selectPerPage h4 span {
+    margin-right: 1rem;
+  }
+  .selectPerPage select {
+    font-size: 1rem;
+    padding: 0.625rem 1rem;
+    font-weight: 900;
+  }
+}

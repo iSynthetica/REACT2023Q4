@@ -1,7 +1,4 @@
-/* body {
-  padding-bottom: 3.25rem;
-} */
-/* #footer {
+.footer {
   position: fixed;
   width: 100%;
   bottom: 0;
@@ -9,13 +6,10 @@
   background-color: rgb(224, 224, 224);
   text-align: center;
   height: 3.25rem;
-} */
+}
 
-/* @media (min-width: 768px) {
-  body {
-    padding-bottom: 5.125rem;
-  }
-  #footer {
+@media (min-width: 768px) {
+  .footer {
     height: 5.125rem;
   }
-} */
+}
