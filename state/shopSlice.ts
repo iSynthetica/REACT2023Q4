@@ -15,7 +15,7 @@ const initialState: ShopState = {
     typeof window !== 'undefined'
       ? window.localStorage.getItem('searchInput') || ''
       : '',
-  perPage: 25,
+  perPage: 10,
   page: 1,
   total: 0,
   totalPages: 0,

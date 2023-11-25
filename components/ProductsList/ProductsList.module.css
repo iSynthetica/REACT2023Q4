@@ -1,0 +1,25 @@
+.contentContainer {
+  padding: 1rem;
+  position: fixed;
+  top: 3.75rem;
+  bottom: 3.25rem;
+  overflow-y: auto;
+  background-color: white;
+  width: 100%;
+}
+
+.contentContainer article {
+  padding: 0.5rem 0;
+  margin: 5px;
+  display: flex;
+  margin-bottom: 0;
+  margin-top: 0;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .contentContainer {
+    top: 5.125rem;
+    bottom: 5.125rem;
+  }
+}

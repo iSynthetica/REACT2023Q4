@@ -60,18 +60,6 @@ a:hover {
   text-align: center;
 }
 
-#contentContainer {
-  padding: 1rem;
-  position: relative;
-}
-
-#contentContainer article {
-  padding: 1rem 0;
-  margin: 5px;
-  display: flex;
-  margin-bottom: 1.563rem;
-  margin-top: 0;
-}
 #overlay {
   display: none;
 }
@@ -99,9 +87,6 @@ ul {
 
 .imgContainer {
   margin-right: 1.563rem;
-}
-.descriptionContainer h3 {
-  margin-bottom: 1.5rem;
 }
 
 #resultTitle {
@@ -158,9 +143,6 @@ ul {
 @media (max-width: 575px) {
   #contentContainer article {
     display: block;
-  }
-  .descriptionContainer h3 {
-    text-align: center;
   }
 
   .imgContainer {
