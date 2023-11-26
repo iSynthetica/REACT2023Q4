@@ -1,6 +1,8 @@
 import styles from './ProductItem.module.css';
 import Link from 'next/link';
 import ProductI from '../../types/ProductI';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
 
 const ProductItem = ({
   id,
@@ -9,6 +11,14 @@ const ProductItem = ({
   images,
   short_description,
 }: ProductI) => {
+  const { page } = useSelector((state: RootState) => state.shop);
+  const getDetailsLink = () => {
+    if (!page || page === 1) {
+      return `/product/${id}`;
+    }
+
+    return `/page/${page}/product/${id}`;
+  };
   return (
     <>
       <article>
@@ -22,7 +32,7 @@ const ProductItem = ({
               __html: short_description || description,
             }}
           />
-          <Link className={styles.button} href={`/product/${id}`}>
+          <Link className={styles.button} href={getDetailsLink()}>
             Product details
           </Link>
         </div>

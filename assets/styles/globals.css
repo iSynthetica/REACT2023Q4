@@ -61,9 +61,6 @@ a:hover {
 }
 
 #overlay {
-  display: none;
-}
-.prodactDetailsActive #overlay {
   display: block;
   position: fixed;
   top: 0;

@@ -8,8 +8,11 @@ import { useEffect } from 'react';
 import ProductI from '../../types/ProductI';
 import ProductItem from '../ProductItem/ProductItem';
 import Loader from '../Loader/Loader';
+import { useRouter } from 'next/router';
+import ProductDetails from '../ProductDetails/ProductDetails';
 
 const ProductsList = () => {
+  const router = useRouter();
   const { s, perPage, page, products } = useSelector(
     (state: RootState) => state.shop
   );
@@ -20,6 +23,10 @@ const ProductsList = () => {
     per_page: perPage,
     page,
   });
+
+  const productId = router.query.id;
+
+  console.log({ productId });
 
   useEffect(() => {
     dispatch(setProducts([]));
@@ -41,6 +48,13 @@ const ProductsList = () => {
                 <ProductItem key={product.id} {...product} />
               ))}
             </div>
+            {productId ? (
+              <>
+                <ProductDetails id={Number(productId)} />
+              </>
+            ) : (
+              ''
+            )}
           </>
         )}
       </section>
