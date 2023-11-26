@@ -10,6 +10,7 @@ import ProductItem from '../ProductItem/ProductItem';
 import Loader from '../Loader/Loader';
 import { useRouter } from 'next/router';
 import ProductDetails from '../ProductDetails/ProductDetails';
+import ProductsListTitle from '../ProductsListTitle/ProductsListTitle';
 
 const ProductsList = () => {
   const router = useRouter();
@@ -18,15 +19,13 @@ const ProductsList = () => {
   );
   const dispatch = useDispatch();
 
-  const { data, isFetching } = useFetchProductsQuery({
+  const { data, isFetching, isError } = useFetchProductsQuery({
     s,
     per_page: perPage,
     page,
   });
 
   const productId = router.query.id;
-
-  console.log({ productId });
 
   useEffect(() => {
     dispatch(setProducts([]));
@@ -43,6 +42,7 @@ const ProductsList = () => {
           <Loader />
         ) : (
           <>
+            <ProductsListTitle isError={isError} />
             <div id="productsList">
               {products.map((product: ProductI) => (
                 <ProductItem key={product.id} {...product} />

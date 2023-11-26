@@ -8,6 +8,8 @@ import Loader from '../Loader/Loader';
 const ProductDetails = ({ id }: { id: number }) => {
   const { page } = useSelector((state: RootState) => state.shop);
   const { data: product, isFetching } = useFetchProductQuery(Number(id));
+  console.log(product);
+
   const getDetailsLink = () => {
     if (!page || page === 1) {
       return `/`;
