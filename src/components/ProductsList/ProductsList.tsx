@@ -3,7 +3,6 @@ import ProductItem from '../ProductItem/ProductItem';
 import ProductI from '../../types/ProductI';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import './ProductsList.css';
-import ResultTitle from '../ResultTitle/ResultTitle';
 import { RootState } from '../../state/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTotal, setTotalPages, setProducts } from '../../state/shopSlice';
@@ -17,7 +16,7 @@ const ProductsList = () => {
   const { id } = useParams();
   const getConteinerClassName = () => (id ? 'prodactDetailsActive' : '');
 
-  const { data, isLoading, isError } = useFetchProductsQuery({
+  const { data, isLoading } = useFetchProductsQuery({
     s,
     per_page: perPage,
     page,
@@ -38,8 +37,6 @@ const ProductsList = () => {
           <p className="loadingContainer">Loading...</p>
         ) : (
           <>
-            <ResultTitle products={products} isError={isError} />
-
             <div id="productsList">
               {products.map((product: ProductI) => (
                 <ProductItem key={product.id} {...product} />
