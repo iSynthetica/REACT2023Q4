@@ -23,3 +23,15 @@
     bottom: 5.125rem;
   }
 }
+
+@media (max-width: 575px) {
+  .contentContainer article {
+    display: block;
+    text-align: center;
+  }
+
+  .imgContainer {
+    text-align: center;
+    margin-right: 0;
+  }
+}

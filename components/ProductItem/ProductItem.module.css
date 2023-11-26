@@ -18,6 +18,10 @@
     background-color: green;
     color: white;
 }
+.imgContainer img {
+  max-width: 15.625rem;
+  height: auto;
+}
 @media (max-width: 575px) {
   .itemTitle {
     text-align: center;

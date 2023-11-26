@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ProductI from '../../types/ProductI';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
+import Image from 'next/image';
 
 const ProductItem = ({
   id,
@@ -22,8 +23,14 @@ const ProductItem = ({
   return (
     <>
       <article>
-        <div className="imgContainer">
-          <img src={images[0].src} alt={name} />
+        <div className={styles.imgContainer}>
+          <Image
+            src={images[0].src}
+            alt={name}
+            width={260}
+            height={260}
+            priority={true}
+          />
         </div>
         <div className="descriptionContainer">
           <h3 className={styles.itemTitle}>{name}</h3>
