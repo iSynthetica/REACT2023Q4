@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import shopReducer from './shopSlice';
 import { productsApi } from '../api/products';
+import { createWrapper } from 'next-redux-wrapper';
 
 export const store = configureStore({
   reducer: {
@@ -13,3 +14,5 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export const wrapper = createWrapper(() => store);

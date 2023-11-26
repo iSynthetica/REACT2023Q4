@@ -1,14 +1,13 @@
 import styles from './ProductDetails.module.css';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../state/store';
-import { useFetchProductQuery } from '../../api/products';
+import { RootState, wrapper } from '../../state/store';
+import { fetchProduct, useFetchProductQuery } from '../../api/products';
 import Loader from '../Loader/Loader';
 
 const ProductDetails = ({ id }: { id: number }) => {
   const { page } = useSelector((state: RootState) => state.shop);
   const { data: product, isFetching } = useFetchProductQuery(Number(id));
-  console.log(product);
 
   const getDetailsLink = () => {
     if (!page || page === 1) {
@@ -65,5 +64,18 @@ const ProductDetails = ({ id }: { id: number }) => {
     </>
   );
 };
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async (context) => {
+    const id = context.params!.id;
+    if (id) {
+      store.dispatch(fetchProduct.initiate(Number(id)));
+    }
+
+    return {
+      props: {},
+    };
+  }
+);
 
 export default ProductDetails;

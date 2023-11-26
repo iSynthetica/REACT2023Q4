@@ -69,3 +69,4 @@ export const productsApi = createApi({
 });
 
 export const { useFetchProductQuery, useFetchProductsQuery } = productsApi;
+export const { fetchProduct, fetchProducts } = productsApi.endpoints;
