@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSearchInput } from '../src/state/shopSlice';
+import { setSearchInput } from '../state/shopSlice';
 import ShopLayout from '../components/ShopLayout/ShopLayout';
 import ProductsList from '../components/ProductsList/ProductsList';
 import { useRouter } from 'next/router';
