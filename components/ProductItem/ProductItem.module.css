@@ -1,0 +1,29 @@
+.itemTitle {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: green;
+}
+.button {
+    margin-top: 1rem;
+    font-size: 1rem;
+    padding: 0.625rem 1rem;
+    border: 1px solid green;
+    background-color: green;
+    color: white;
+    display: inline-block;
+}
+.button:hover {
+    border: 1px solid green;
+    background-color: green;
+    color: white;
+}
+.imgContainer img {
+  max-width: 15.625rem;
+  height: auto;
+}
+@media (max-width: 575px) {
+  .itemTitle {
+    text-align: center;
+  }
+}
