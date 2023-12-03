@@ -70,4 +70,5 @@ button:focus-visible {
   max-width: 100%;
   padding: 15px;
   margin: auto;
+  box-sizing: border-box;
 }

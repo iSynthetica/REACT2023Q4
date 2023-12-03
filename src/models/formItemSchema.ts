@@ -26,6 +26,7 @@ const formSchema = yup.object().shape({
     .required('Age is required')
     .min(18, 'You must be older 18 years old'),
   gender: yup.string().required('Select your gender'),
+  tc: yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
 });
 
 export default formSchema;
