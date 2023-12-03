@@ -1,7 +1,8 @@
 import { FormEvent, ForwardedRef, forwardRef, useState } from 'react';
 import styles from '../UncontrolledInput/UncontrolledInput.module.css';
 import autocompleteStyles from './CountriesAutocomplete.module.css';
-import { countries } from '../../data/countries';
+import { RootState } from '../../state/store';
+import { useSelector } from 'react-redux';
 
 interface Props {
   error?: string;
@@ -9,6 +10,7 @@ interface Props {
 
 const CountriesAutocomplete = forwardRef(
   ({ error }: Props, ref: ForwardedRef<HTMLInputElement>) => {
+    const { countries } = useSelector((state: RootState) => state.form);
     const [countryCode, setCountryCode] = useState('');
     const [inputValue, setInputValue] = useState('');
     const [suggestions, setSuggestions] = useState([] as string[]);
@@ -26,7 +28,6 @@ const CountriesAutocomplete = forwardRef(
       if (value.trim()) {
         setInputValue(value);
 
-        // Filter suggestions based on input value
         const filteredSuggestions = Object.values(countries).filter(
           (country: string) =>
             country.toLowerCase().includes(value.toLowerCase())

@@ -5,7 +5,7 @@ export const formData: FormItem[] = [
     name: 'Walter',
     age: 45,
     email: 'walterwhite@gmail.com',
-    password: '123456789',
+    password: '*K&BjP#Ufy&3SRrq',
     gender: 'male',
     country: 'US',
     picture:
@@ -15,7 +15,7 @@ export const formData: FormItem[] = [
     name: 'Ozzy',
     age: 75,
     email: 'ozzy@gmail.com',
-    password: '123456789',
+    password: 'zJ4smeNwSw*V7v@^',
     gender: 'male',
     country: 'US',
     picture:
@@ -25,7 +25,7 @@ export const formData: FormItem[] = [
     name: 'Foreman',
     age: 1000,
     email: 'foreman@gmail.com',
-    password: '123456789',
+    password: 'ScGN4^3diRyoZWZG',
     gender: 'male',
     country: 'JP',
     picture:

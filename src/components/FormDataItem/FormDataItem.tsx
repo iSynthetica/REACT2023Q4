@@ -1,7 +1,10 @@
 import { FormItem } from '../../state/formSlice';
-import { Countries, countries } from '../../data/countries';
+import { Countries } from '../../data/countries';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
 
 const FormDataItem = ({ data }: { data: FormItem }) => {
+  const { countries } = useSelector((state: RootState) => state.form);
   const country = countries[data.country as keyof Countries]
     ? countries[data.country as keyof Countries]
     : 'N/A';

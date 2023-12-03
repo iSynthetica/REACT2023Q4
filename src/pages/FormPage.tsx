@@ -50,8 +50,6 @@ const FormPage = () => {
       ? (pictureRef.current?.files?.[0] as File)
       : undefined;
 
-    console.log({ picture });
-
     try {
       await formSchema.validate(
         {
@@ -82,8 +80,6 @@ const FormPage = () => {
         };
         dispatch(addFormItem(formData));
 
-        console.log({ formData });
-
         navigate('/');
       }
     } catch (error) {
@@ -92,13 +88,11 @@ const FormPage = () => {
 
       for (let i = 0; i < errors.length; i++) {
         const error = errors[i];
-        console.log(error.path);
 
         errorsObj[error.path as keyof Errors] = error.message;
       }
 
       setValidationErrors(errorsObj);
-      // console.log((error as ValidationError).inner);
     }
   };
 

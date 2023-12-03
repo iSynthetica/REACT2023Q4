@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { formData } from '../data/data';
+import { Countries, countries } from '../data/countries';
 
 export interface FormItem {
   name: string;
@@ -13,10 +14,12 @@ export interface FormItem {
 
 interface FormState {
   data: FormItem[];
+  countries: Countries;
 }
 
 const initialState: FormState = {
   data: formData,
+  countries,
 };
 
 const formSlice = createSlice({
