@@ -7,7 +7,6 @@ export interface FormItem {
   email: string;
   password: string;
   gender: 'female' | 'male';
-  acceptTC: boolean;
   picture: string; // base64
   country: string;
 }

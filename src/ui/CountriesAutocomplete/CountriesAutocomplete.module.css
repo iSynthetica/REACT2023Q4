@@ -1,0 +1,24 @@
+.autocompleteFormGroup {
+  position: relative;
+}
+.autocompleteSuggestions {
+    max-height: 300px;
+    overflow-y: auto;
+    list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.autocompleteSuggestions li {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.autocompleteSuggestions li:hover {
+    background-color: #f0f0f0;
+  }
