@@ -11,12 +11,7 @@ const CountriesAutocomplete = forwardRef(
   ({ error }: Props, ref: ForwardedRef<HTMLInputElement>) => {
     const [countryCode, setCountryCode] = useState('');
     const [inputValue, setInputValue] = useState('');
-    const [suggestions, setSuggestions] = useState([
-      'Afghanistan (AF)',
-      'Albania (AL)',
-      'Algeria (DZ)',
-      'American Samoa (AS)',
-    ]);
+    const [suggestions, setSuggestions] = useState([] as string[]);
 
     const getGroupClassName = () =>
       `${styles.formGroup} ${autocompleteStyles.autocompleteFormGroup}`;

@@ -8,15 +8,15 @@ const FormDataItem = ({ data }: { data: FormItem }) => {
 
   return (
     <article>
+      <p>
+        <img src={`${data.picture}`} />
+      </p>
       <h2>{data.name}</h2>
       <p>Age: {data.age}</p>
       <p>Email: {data.email}</p>
       <p>Gender: {data.gender}</p>
       <p>Country: {country}</p>
       <p>Password: {data.password}</p>
-      <p>
-        <img src={`${data.picture}`} />
-      </p>
     </article>
   );
 };

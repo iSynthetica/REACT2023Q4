@@ -25,6 +25,7 @@ const formSchema = yup.object().shape({
     .number()
     .required('Age is required')
     .min(18, 'You must be older 18 years old'),
+  gender: yup.string().required('Select your gender'),
 });
 
 export default formSchema;

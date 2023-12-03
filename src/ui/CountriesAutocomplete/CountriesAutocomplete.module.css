@@ -2,9 +2,9 @@
   position: relative;
 }
 .autocompleteSuggestions {
-    max-height: 300px;
-    overflow-y: auto;
-    list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+  list-style: none;
   padding: 0;
   margin: 0;
   position: absolute;
@@ -20,5 +20,15 @@
   cursor: pointer;
 }
 .autocompleteSuggestions li:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .autocompleteSuggestions {
+    background-color: #333;
+    border: 1px solid #999;
   }
+.autocompleteSuggestions li:hover {
+  background-color: #666;
+}
+}

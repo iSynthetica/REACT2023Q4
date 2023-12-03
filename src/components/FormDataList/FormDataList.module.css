@@ -1,0 +1,11 @@
+.dataListSection {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.dataListSection article {
+  flex-basis: 33%;
+  text-align: center;
+}
